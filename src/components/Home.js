@@ -13,21 +13,21 @@ function Home(props){
             <h1>Home Page Here! {count}</h1>
 
       <section id="banner">
-        <div class="inner">
+        <div className="inner">
           <h2>Use My Tech Stuff</h2>
           <p>
             Tired of paying ridiculous fees for camera and other equipment<br />
             rentals? Bypass the middleman and rent from a real person!
           </p>
           <ul class="actions special">
-            <li><a href="#" class="button primary">Explore Items</a></li>
+            <li><a href="#" className="button primary">Explore Items</a></li>
           </ul>
         </div>
-        <a href="#one" class="more scrolly">Learn More</a>
+        <a href="#one" className="more scrolly">Learn More</a>
       </section>
 
 
-      <section id="one" class="wrapper style1 special">
+      <section id="one" className="wrapper style1 special">
         <div class="inner">
           <header class="major">
             <h2>
@@ -41,20 +41,20 @@ function Home(props){
               ullamcorper.
             </p>
           </header>
-          <ul class="icons major">
+          <ul className="icons major">
             <li>
-              <span class="icon fa-gem major style1"
-                ><span class="label">Lorem</span></span
+              <span className="icon fa-gem major style1"
+                ><span className="label">Lorem</span></span
               >
             </li>
             <li>
-              <span class="icon fa-heart major style2"
-                ><span class="label">Ipsum</span></span
+              <span className="icon fa-heart major style2"
+                ><span className="label">Ipsum</span></span
               >
             </li>
             <li>
-              <span class="icon solid fa-code major style3"
-                ><span class="label">Dolor</span></span
+              <span className="icon solid fa-code major style3"
+                ><span className="label">Dolor</span></span
               >
             </li>
           </ul>
@@ -62,10 +62,10 @@ function Home(props){
       </section>
 
 
-      <section id="two" class="wrapper alt style2">
-        <section class="spotlight">
-          <div class="image"><img src={pic01} alt="" /></div>
-          <div class="content">
+      <section id="two" className="wrapper alt style2">
+        <section className="spotlight">
+          <div className="image"><img src={pic01} alt="" /></div>
+          <div className="content">
             <h2>
               Magna primis lobortis<br />
               sed ullamcorper
@@ -76,9 +76,9 @@ function Home(props){
             </p>
           </div>
         </section>
-        <section class="spotlight">
-          <div class="image"><img src={pic02} alt="" /></div>
-          <div class="content">
+        <section className="spotlight">
+          <div className="image"><img src={pic02} alt="" /></div>
+          <div className="content">
             <h2>
               Tortor dolore feugiat<br />
               elementum magna
@@ -89,9 +89,9 @@ function Home(props){
             </p>
           </div>
         </section>
-        <section class="spotlight">
-          <div class="image"><img src={pic03} alt="" /></div>
-          <div class="content">
+        <section className="spotlight">
+          <div className="image"><img src={pic03} alt="" /></div>
+          <div className="content">
             <h2>
               Augue eleifend aliquet<br />
               sed condimentum
@@ -105,9 +105,9 @@ function Home(props){
       </section>
 
 
-      <section id="three" class="wrapper style3 special">
-        <div class="inner">
-          <header class="major">
+      <section id="three" className="wrapper style3 special">
+        <div className="inner">
+          <header className="major">
             <h2>Accumsan mus tortor nunc aliquet</h2>
             <p>
               Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet
@@ -116,43 +116,43 @@ function Home(props){
               ullamcorper.
             </p>
           </header>
-          <ul class="features">
-            <li class="icon fa-paper-plane">
+          <ul className="features">
+            <li className="icon fa-paper-plane">
               <h3>Arcu accumsan</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
                 tincidunt nullam amet leo Aenean ligula consequat consequat.
               </p>
             </li>
-            <li class="icon solid fa-laptop">
+            <li className="icon solid fa-laptop">
               <h3>Ac Augue Eget</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
                 tincidunt nullam amet leo Aenean ligula consequat consequat.
               </p>
             </li>
-            <li class="icon solid fa-code">
+            <li className="icon solid fa-code">
               <h3>Mus Scelerisque</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
                 tincidunt nullam amet leo Aenean ligula consequat consequat.
               </p>
             </li>
-            <li class="icon solid fa-headphones-alt">
+            <li className="icon solid fa-headphones-alt">
               <h3>Mauris Imperdiet</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
                 tincidunt nullam amet leo Aenean ligula consequat consequat.
               </p>
             </li>
-            <li class="icon fa-heart">
+            <li className="icon fa-heart">
               <h3>Aenean Primis</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
                 tincidunt nullam amet leo Aenean ligula consequat consequat.
               </p>
             </li>
-            <li class="icon fa-flag">
+            <li className="icon fa-flag">
               <h3>Tortor Ut</h3>
               <p>
                 Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
@@ -164,7 +164,7 @@ function Home(props){
       </section>
 
 
-      <section id="cta" class="wrapper style4">
+      <section id="cta" className="wrapper style4">
         <div class="inner">
           <header>
             <h2>Arcue ut vel commodo</h2>
@@ -173,43 +173,43 @@ function Home(props){
               amet eleifend fringilla.
             </p>
           </header>
-          <ul class="actions stacked">
-            <li><a href="#" class="button fit primary">Activate</a></li>
-            <li><a href="#" class="button fit">Learn More</a></li>
+          <ul className="actions stacked">
+            <li><a href="#" className="button fit primary">Activate</a></li>
+            <li><a href="#" className="button fit">Learn More</a></li>
           </ul>
         </div>
       </section>
 
 
       <footer id="footer">
-        <ul class="icons">
+        <ul className="icons">
           <li>
-            <a href="#" class="icon brands fa-twitter"
-              ><span class="label">Twitter</span></a
+            <a href="#" className="icon brands fa-twitter"
+              ><span className="label">Twitter</span></a
             >
           </li>
           <li>
-            <a href="#" class="icon brands fa-facebook-f"
-              ><span class="label">Facebook</span></a
+            <a href="#" className="icon brands fa-facebook-f"
+              ><span className="label">Facebook</span></a
             >
           </li>
           <li>
-            <a href="#" class="icon brands fa-instagram"
-              ><span class="label">Instagram</span></a
+            <a href="#" className="icon brands fa-instagram"
+              ><span className="label">Instagram</span></a
             >
           </li>
           <li>
-            <a href="#" class="icon brands fa-dribbble"
-              ><span class="label">Dribbble</span></a
+            <a href="#" className="icon brands fa-dribbble"
+              ><span className="label">Dribbble</span></a
             >
           </li>
           <li>
-            <a href="#" class="icon solid fa-envelope"
-              ><span class="label">Email</span></a
+            <a href="#" className="icon solid fa-envelope"
+              ><span className="label">Email</span></a
             >
           </li>
         </ul>
-        <ul class="copyright">
+        <ul className="copyright">
           <li>&copy; Untitled</li>
           <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>

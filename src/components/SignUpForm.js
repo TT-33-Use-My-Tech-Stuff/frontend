@@ -50,7 +50,21 @@ export default function SignUpForm(props){
 
 //Styles
 const FormSection = styled.section`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     form {
-        /* font-size: 6rem; */
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        button{
+            width: 50%;
+            margin: 0 auto;
+        }
     }
 `
