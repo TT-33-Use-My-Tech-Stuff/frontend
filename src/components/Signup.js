@@ -1,8 +1,10 @@
 import React, {useState, useEffect}from 'react';
 import { connect } from 'react-redux';
 import { submitSignup } from '../actions';
+import SignUpForm from './SignUpForm'
 
-
+//THIS FILE HOLDS ALL STATE AND RENDERS THE FORM AS CHILD COMPONENT
+//PASSING STATE AND FUNCTIONS AS PROPS
 function Signup(props){
 
     //Empty form shape
@@ -11,15 +13,21 @@ function Signup(props){
         password: '',
         email: ''
     }
+    const initialFormErrors = {
+        name: '',
+        password: '',
+        email: ''
+    }
 
     /*State slices: #1 Form State
-                    #2  */
+                    #2 Form shema(validation)*/
     const [form, setForm] = useState(initialForm)
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
 
-    const onChange = (inputName, inpuitValue) => {
+    const onChange = (inputName, inputValue) => { 
         setForm({
             ...form,
-            [inputName]: inpuitValue
+            [inputName]: inputValue
         })
     }
 
@@ -32,11 +40,14 @@ function Signup(props){
     return(
         <div>
             <h1>Signup Form Here!</h1>
-            <form>
-
-            </form>
+            <SignUpForm 
+            values={form}
+            update={onChange} 
+            submit={onSubmit} 
+            />
         </div>
     )
 }
 
 export default connect(null, { submitSignup })(Signup);
+
