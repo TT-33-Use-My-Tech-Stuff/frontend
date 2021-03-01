@@ -13,7 +13,7 @@ export default function SignUpForm(props){
  
     return (
         <FormSection>
-        <form>
+        <form onSubmit={submit}>
             <label>
                 <input 
                 name='name' 
