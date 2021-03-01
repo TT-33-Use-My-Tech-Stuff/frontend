@@ -7,6 +7,7 @@ export default function SignUpForm(props){
 
     const change = e => {
         const {name, value, type, checked} = e.target
+        //Just in case a checkbox is used
         const valueToUse = type === 'checkbox' ?  checked : value
         update(name, valueToUse)
     }
