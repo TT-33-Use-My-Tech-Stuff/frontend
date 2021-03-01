@@ -1,0 +1,28 @@
+import * as yup from 'yup'
+
+const signSchema = yup.object().shape({
+    name: yup
+    .string()
+    .required('Username is required')
+    .min(7, 'Username must be at least 7 character'),
+    email: yup
+    .string()
+    .email('This must be a valid email')
+    .required('Please enter your email'),
+    password: yup
+    .string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters long')
+    .matches(
+        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+    ),
+    confirmPassword: yup
+    .string()
+    .required('Please confirm your password')
+    .when('password', {
+        is: password => (password && password.length > 0 ? true : false),
+        then: yup.string().oneOf([yup.ref('password')], "Password doesn't match")
+    })
+})
+export default signSchema

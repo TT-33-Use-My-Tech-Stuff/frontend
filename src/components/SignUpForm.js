@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default function SignUpForm(props){
 
-    const {values, update, submit} = props
+    const {values, update, submit, errors} = props
 
     const change = e => {
         const {name, value, type, checked} = e.target
@@ -14,44 +14,50 @@ export default function SignUpForm(props){
  
     return (
         <FormSection>
-        <form onSubmit={submit}>
-            <label>
-                <input 
-                name='name' 
-                type='text' 
-                placeholder='Name'
-                values={values.name}
-                onChange={change}
-                />
-            </label>
-            <label>
-                <input 
-                name='email'
-                type='text' 
-                placeholder='Password' 
-                values={values.email}
-                onChange={change}
-                />
-            </label>
-            <label>
-                <input 
-                name='password' 
-                type='text' 
-                placeholder='Email'
-                values={values.password}
-                onChange={change}
-                />
-                <input 
-                name='confirmPassword' 
-                type='text' 
-                placeholder='Email'
-                values={values.confirmPassword}
-                onChange={change}
-                />
-            </label>
-            <button>Sign Up!</button>
-        </form>
-    </FormSection>
+            <div className='error-modal'>
+                <p>{}</p>
+                <p>{}</p>
+                <p>{}</p>
+                <p>{}</p>
+            </div>
+            <form onSubmit={submit}>
+                <label>
+                    <input 
+                    name='name' 
+                    type='text' 
+                    placeholder='Name'
+                    values={values.name}
+                    onChange={change}
+                    />
+                </label>
+                <label>
+                    <input 
+                    name='email'
+                    type='text' 
+                    placeholder='Email' 
+                    values={values.email}
+                    onChange={change}
+                    />
+                </label>
+                <label>
+                    <input 
+                    name='password' 
+                    type='text' 
+                    placeholder='Password'
+                    values={values.password}
+                    onChange={change}
+                    />
+                    <input 
+                    name='confirmPassword' 
+                    type='text' 
+                    placeholder='Confirm Password'
+                    values={values.confirmPassword}
+                    onChange={change}
+                    />
+                </label>
+                <button>Sign Up!</button>
+            </form>
+        </FormSection>
     )
 }
 
