@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import submitLogin from '../actions';
+import { submitLogin } from '../actions';
 
 function Login(){
 
