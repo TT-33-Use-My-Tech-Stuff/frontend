@@ -10,11 +10,10 @@ function Signup(props){
     //Empty form shape
     const initialForm = {
         name: '',
+        email: '',
         password: '',
-        email: ''
+        confirmPassword: '',
     }
-
-
     /*State slices: #1 Form State
                    */
     const [form, setForm] = useState(initialForm)
@@ -25,8 +24,6 @@ function Signup(props){
             [inputName]: inputValue
         })
     }
-
-
     const onSubmit = e => {
         e.preventDefault();
         props.submitSignup(form);

@@ -26,19 +26,26 @@ export default function SignUpForm(props){
             </label>
             <label>
                 <input 
-                name='password'
+                name='email'
                 type='text' 
                 placeholder='Password' 
-                values={values.password}
+                values={values.email}
                 onChange={change}
                 />
             </label>
             <label>
                 <input 
-                name='email' 
+                name='password' 
                 type='text' 
                 placeholder='Email'
-                values={values.email}
+                values={values.password}
+                onChange={change}
+                />
+                <input 
+                name='confirmPassword' 
+                type='text' 
+                placeholder='Email'
+                values={values.confirmPassword}
                 onChange={change}
                 />
             </label>
