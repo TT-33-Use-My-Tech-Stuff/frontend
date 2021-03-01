@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default function SignUpForm(props){
 
-    const {values, update, submit, errors} = props
+    const {values, update, submit, errors, disabled} = props
 
     const change = e => {
         const {name, value, type, checked} = e.target
@@ -14,11 +14,11 @@ export default function SignUpForm(props){
  
     return (
         <FormSection>
-            <div className='error-modal'>
-                <p>{}</p>
-                <p>{}</p>
-                <p>{}</p>
-                <p>{}</p>
+            <div className='error-modal' style={{color: 'red'}}>
+                <p>{errors.name}</p>
+                <p>{errors.email}</p>
+                <p>{errors.password}</p>
+                <p>{errors.confirmPassword}</p>
             </div>
             <form onSubmit={submit}>
                 <label>
@@ -47,15 +47,8 @@ export default function SignUpForm(props){
                     values={values.password}
                     onChange={change}
                     />
-                    <input 
-                    name='confirmPassword' 
-                    type='text' 
-                    placeholder='Confirm Password'
-                    values={values.confirmPassword}
-                    onChange={change}
-                    />
                 </label>
-                <button>Sign Up!</button>
+                <button disabled={disabled}>Sign Up!</button>
             </form>
         </FormSection>
     )

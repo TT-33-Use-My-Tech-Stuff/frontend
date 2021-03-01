@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import { connect } from 'react-redux';
 import { submitSignup } from '../actions';
 import SignUpForm from './SignUpForm'
@@ -15,19 +15,22 @@ function Signup(props){
         name: '',
         email: '',
         password: '',
-        confirmPassword: '',
     }
     //Empty form error shape
     const intialFormErrors = {
         name: '',
         email: '',
         password: '',
-        confirmPassword: '',
     }
+    //Button disabled until form matches schema
+
+    const initalDisabled = true
+
     /*State slices: #1 Form State
                     #2 Error State against validation*/
     const [form, setForm] = useState(initialForm)
     const [formErrors, setFormErrors] = useState(intialFormErrors)
+    const [disabled, setDisabled] = useState(initalDisabled)
 
     const onChange = (inputName, inputValue) => { 
         //Schema Validate
@@ -49,6 +52,11 @@ function Signup(props){
         props.submitSignup(form);
     }
 
+    //Handles submission button's disabled prop
+    useEffect(() => {
+        signSchema.isValid(form).then(valid => setDisabled(!valid))
+    }, [form])
+
     return(
         <div>
             <h1>Signup Form Here!</h1>
@@ -57,6 +65,7 @@ function Signup(props){
             update={onChange} 
             submit={onSubmit}
             errors={formErrors} 
+            disabled={disabled}
             />
         </div>
     )
