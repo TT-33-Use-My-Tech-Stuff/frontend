@@ -27,7 +27,6 @@ const StyledNav = styled.nav`
 
     ul{
         width: 50%;
-        font-size: 3rem;
         display: flex;
         justify-content: space-evenly;
     }

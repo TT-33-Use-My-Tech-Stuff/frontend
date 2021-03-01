@@ -51,6 +51,6 @@ export default function SignUpForm(props){
 //Styles
 const FormSection = styled.section`
     form {
-        font-size: 6rem;
+        /* font-size: 6rem; */
     }
 `
