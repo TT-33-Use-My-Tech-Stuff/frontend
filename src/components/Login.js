@@ -31,16 +31,22 @@ function Login (props) {
     const [disabledbtn, setDisabledBtn] = useState(initialDisabledBtn)
 
 
+    const updateInput = (name, value) => {
+        setFormValues({...formValues, [name]: value})
+    }
+
     const onSubmit = e => {
         e.preventDefault();
-        submitLogin(/* YOUR FORM STATE HERE */)
+        props.submitLogin(/* YOUR FORM STATE HERE */)
     }
 
     return(
         <div>
             <StyledHeader>Login Here!</StyledHeader>
             <LoginForm 
+                updateInput={updateInput}
                 disabled={disabledbtn}
+                onSubmit={onSubmit}
             />
         </div>
     )
@@ -50,7 +56,7 @@ const StyledHeader = styled.h1`
     width: 100%;
     text-align: center;
     font-size: 2.4rem;
-    margin-top: 10%;
+    margin-top: 5%;
 `
 
 
