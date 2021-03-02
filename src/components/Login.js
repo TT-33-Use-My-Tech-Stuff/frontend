@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { submitLogin } from '../actions';
 import LoginForm from './LoginForm'
 import styled from 'styled-components'
+import loginSchema from './validation/loginSchema'
+import * as yup from 'yup'
 
 /*
 Login component:
@@ -40,6 +42,12 @@ function Login (props) {
         props.submitLogin(/* YOUR FORM STATE HERE */)
     }
 
+    //useEffect to enable button when validation is clear
+    useEffect(() => {
+        loginSchema.isValid(formValues)
+            .then(valid => setDisabledBtn(!valid))
+    }, [formValues])
+
     return(
         <div>
             <StyledHeader>Login Here!</StyledHeader>
@@ -47,6 +55,7 @@ function Login (props) {
                 updateInput={updateInput}
                 disabled={disabledbtn}
                 onSubmit={onSubmit}
+                formErr={formErr}
             />
         </div>
     )

@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function LoginForm (props) {
-    const {disabled, updateInput, onSubmit} = props
-    
+    const {disabled, updateInput, onSubmit, formErr} = props
 
     const onChange = (event) => {
         const {name, value} = event.target
