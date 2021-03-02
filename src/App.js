@@ -4,6 +4,8 @@ import MeetDevs from './components/MeetDevs'
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Nav from './components/Nav';
+import Dashboard from './components/Dashboard';
+import TechList from './components/TechList';
 
 import { Route } from 'react-router-dom';
 
@@ -18,6 +20,8 @@ function App() {
       <Route path='/about' component={MeetDevs} />
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
+      <Route path='/dash' component={Dashboard} />
+      <Route path='/rentals' component={TechList} />
 
     </div>
   );
