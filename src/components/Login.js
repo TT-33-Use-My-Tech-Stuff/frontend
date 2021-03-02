@@ -50,7 +50,6 @@ const StyledHeader = styled.h1`
     width: 100%;
     text-align: center;
     font-size: 2.4rem;
-    margin-top: 10%;
 `
 
 
