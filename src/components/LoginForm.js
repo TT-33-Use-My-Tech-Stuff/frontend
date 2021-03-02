@@ -2,21 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function LoginForm (props) {
-    const {disabled} = props
+    const {disabled, updateInput, onSubmit} = props
     
+
+    const onChange = (event) => {
+        const {name, value} = event.target
+        updateInput(name, value)
+    }
+
     return (
         <StyledLogin>
-            <form>
+            <form onSubmit={onSubmit}>
                 <input
                     name='email'
                     type='text'
                     placeholder='Email'
+                    onChange={onChange}
                 />
 
                 <input
                     name='password'
                     type='password'
                     placeholder='Password'
+                    onChange={onChange}
                 />
 
                 <StyledBtn disabled={disabled}>Login</StyledBtn>
