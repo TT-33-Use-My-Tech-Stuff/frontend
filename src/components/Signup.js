@@ -11,6 +11,7 @@ import signSchema from './validation/signupSchema'
 //PASSING STATE AND FUNCTIONS AS PROPS TO THE CHILD
 function Signup(props){
 
+    
     //Empty form shape
     const initialForm = {
         name: '',
@@ -68,6 +69,7 @@ function Signup(props){
             errors={formErrors} 
             disabled={disabled}
             />
+            <div>Helldisjfodshfods</div>
         </StyledSignup>
     )
 }
