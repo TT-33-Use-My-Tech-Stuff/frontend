@@ -5,9 +5,9 @@ const signSchema = yup.object().shape({
     .string()
     .required('Username is required')
     .min(7, 'Username must be at least 7 character'),
-    // email: yup
-    // .string()
-    // .email('This must be a valid email')
+    email: yup
+    .string()
+    .email('This must be a valid email'),
     // .required('Please enter your email'),
     password: yup
     .string()

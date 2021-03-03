@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { submitSignup } from '../actions';
 import SignUpForm from './SignUpForm';
 import styled from 'styled-components';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import * as yup from 'yup'
 import signSchema from './validation/signupSchema'
@@ -12,6 +12,7 @@ import signSchema from './validation/signupSchema'
 //PASSING STATE AND FUNCTIONS AS PROPS TO THE CHILD
 function Signup(props){
 
+    const { push } = useHistory();
     
     //Empty form shape
     const initialForm = {
@@ -53,11 +54,7 @@ function Signup(props){
     const onSubmit = e => {
         e.preventDefault();
         props.submitSignup(form);
-
-        // axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', form)
-        // .then(res => {
-        //     console.log(res);
-        // })
+        push.apply('/login');
     }
 
     //Handles submission button's disabled prop
