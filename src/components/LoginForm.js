@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function LoginForm (props) {
-    const {disabled, updateInput, onSubmit, formErr} = props
+    const {disabled, updateInput, onSubmit, formErr, values} = props
 
     const onChange = (event) => {
         const {name, value} = event.target
@@ -10,13 +10,17 @@ export default function LoginForm (props) {
     }
 
     return (
+        
         <StyledLogin>
             <form onSubmit={onSubmit}>
+                <StyledParagraph>{formErr.email}</StyledParagraph>
+                <StyledParagraph>{formErr.password}</StyledParagraph>
                 <input
                     name='email'
                     type='text'
                     placeholder='Email'
                     onChange={onChange}
+                    value={values.email}
                 />
 
                 <input
@@ -24,6 +28,7 @@ export default function LoginForm (props) {
                     type='password'
                     placeholder='Password'
                     onChange={onChange}
+                    value={values.password}
                 />
 
                 <StyledBtn disabled={disabled}>Login</StyledBtn>
@@ -56,4 +61,10 @@ const StyledLogin = styled.section`
 const StyledBtn = styled.button`
     margin: 0 auto;
     width: 50%;
+`
+
+const StyledParagraph = styled.p`
+    text-align: center;
+    color: red;
+    font-size: 1.4rem;
 `
