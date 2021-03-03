@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 function Nav(props){
 
-    const {loggedin} = props;
+    const loggedin = localStorage.getItem('token');
 
     const logout = () => {
-
+        localStorage.removeItem('token');
     }
 
     return(

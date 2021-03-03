@@ -12,7 +12,7 @@ import signSchema from './validation/signupSchema'
 //PASSING STATE AND FUNCTIONS AS PROPS TO THE CHILD
 function Signup(props){
 
-    const { push } = useHistory();
+    const history = useHistory();
     
     //Empty form shape
     const initialForm = {
@@ -54,7 +54,7 @@ function Signup(props){
     const onSubmit = e => {
         e.preventDefault();
         props.submitSignup(form);
-        push.apply('/login');
+        history.push('/login');
     }
 
     //Handles submission button's disabled prop

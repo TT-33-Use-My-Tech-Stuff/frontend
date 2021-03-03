@@ -16,11 +16,11 @@ export default function LoginForm (props) {
                 <StyledParagraph>{formErr.email}</StyledParagraph>
                 <StyledParagraph>{formErr.password}</StyledParagraph>
                 <input
-                    name='email'
+                    name='username'
                     type='text'
-                    placeholder='Email'
+                    placeholder='Username'
                     onChange={onChange}
-                    value={values.email}
+                    value={values.username}
                 />
 
                 <input

@@ -1,9 +1,9 @@
 import * as yup from 'yup'
 
 const loginSchema = yup.object().shape({
-    email: yup.string()
-        .email('Must be a valid Email address.')
-        .required('Email is required.'),
+    username: yup.string()
+        // .email('Must be a valid Email address.')
+        .required('Username is required.'),
     password: yup.string()
         .min(8, 'Password must be at least 8 characters long.')
         // .matches(
