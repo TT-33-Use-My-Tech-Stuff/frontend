@@ -54,7 +54,7 @@ function Login (props) {
     const onSubmit = e => {
         e.preventDefault();
         props.submitLogin(formValues);
-
+        history.push('/dash');
     }
 
     //useEffect to enable button when validation is clear
