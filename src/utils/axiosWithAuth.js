@@ -21,5 +21,5 @@ export default axiosWithAuth;
 
 /**
  * PETER BASE URL - NODE: https://tt-33-use-my-tech.herokuapp.com/
- * OSCAR BASE URL - JAVA: https://git.heroku.com/buildweek-usemytech.git
+ * OSCAR BASE URL - JAVA: https://buildweek-usemytech.herokuapp.com/
  */
