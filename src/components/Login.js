@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import styled from 'styled-components'
 import loginSchema from './validation/loginSchema'
 import * as yup from 'yup'
+import { useHistory } from 'react-router-dom';
 
 /*
 Login component:
@@ -15,12 +16,12 @@ Login component:
 */
 
 const initialFormValues = {
-    email: '',
+    username: '',
     password: '',
 }
 
 const initialFormErrors = {
-    email: '',
+    username: '',
     password: '',
 }
 
@@ -28,9 +29,11 @@ const initialDisabledBtn = true;
 
 function Login (props) {
     // State: initial form values, initial form errors, disabled login button
-    const [formValues, setFormValues] = useState(initialFormValues)
-    const [formErr, setFormErr] = useState(initialFormErrors)
-    const [disabledbtn, setDisabledBtn] = useState(initialDisabledBtn)
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [formErr, setFormErr] = useState(initialFormErrors);
+    const [disabledbtn, setDisabledBtn] = useState(initialDisabledBtn);
+
+    const history = useHistory();
 
 
     const updateInput = (name, value) => {
@@ -50,7 +53,8 @@ function Login (props) {
 
     const onSubmit = e => {
         e.preventDefault();
-        props.submitLogin(/* YOUR FORM STATE HERE */)
+        props.submitLogin(formValues);
+
     }
 
     //useEffect to enable button when validation is clear

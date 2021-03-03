@@ -11,15 +11,38 @@ export function submitSignup(signupData){
         axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', signupData)
         .then(res => {
             console.log(res)
+
         })
         .catch(err => {
             console.log(err.message)
         })
     }
 
+    //     return dispatch => {
+    //         axiosWithAuth.post('https://buildweek-usemytech.herokuapp.com/users/user', signupData)
+    //         .then(res => {
+    //             console.log(res)
+    //         })
+    //         .catch(err => {
+    //             console.log(err.message)
+    //         })
+    // }
+
     // return { type: SUBMIT_SIGNUP, payload: signupData};
 }
 
 export function submitLogin(loginData){
-    return{ type: SUBMIT_LOGIN, payload: loginData};
+    console.log(loginData);
+
+    return dispatch => {
+        axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/login', loginData)
+        .then(res => {
+            console.log(res.data);
+            localStorage.setItem('token', res.data.token);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+    // return{ type: SUBMIT_LOGIN, payload: loginData};
 }
