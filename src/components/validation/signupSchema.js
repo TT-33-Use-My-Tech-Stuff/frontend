@@ -1,14 +1,14 @@
 import * as yup from 'yup'
 
 const signSchema = yup.object().shape({
-    name: yup
+    username: yup
     .string()
     .required('Username is required')
     .min(7, 'Username must be at least 7 character'),
-    email: yup
-    .string()
-    .email('This must be a valid email')
-    .required('Please enter your email'),
+    // email: yup
+    // .string()
+    // .email('This must be a valid email')
+    // .required('Please enter your email'),
     password: yup
     .string()
     .required('Password is required')

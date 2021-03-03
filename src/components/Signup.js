@@ -15,13 +15,13 @@ function Signup(props){
     
     //Empty form shape
     const initialForm = {
-        name: '',
+        username: '',
         email: '',
         password: '',
     }
     //Empty form error shape
     const intialFormErrors = {
-        name: '',
+        username: '',
         email: '',
         password: '',
     }
@@ -54,10 +54,10 @@ function Signup(props){
         e.preventDefault();
         props.submitSignup(form);
 
-        axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', form)
-        .then(res => {
-            console.log(res);
-        })
+        // axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', form)
+        // .then(res => {
+        //     console.log(res);
+        // })
     }
 
     //Handles submission button's disabled prop
