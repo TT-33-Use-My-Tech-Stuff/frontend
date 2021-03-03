@@ -34,6 +34,17 @@ function Login (props) {
 
 
     const updateInput = (name, value) => {
+        //yup validation
+        yup.reach(loginSchema, name)
+            .validate(value)
+            .then(() => {
+                setFormErr({...formErr, [name]: ''})
+            })
+            .catch((err) => {
+                setFormErr({...formErr, [name]: err.errors[0]})
+            })
+        
+        
         setFormValues({...formValues, [name]: value})
     }
 
@@ -56,6 +67,7 @@ function Login (props) {
                 disabled={disabledbtn}
                 onSubmit={onSubmit}
                 formErr={formErr}
+                values={formValues}
             />
         </div>
     )
