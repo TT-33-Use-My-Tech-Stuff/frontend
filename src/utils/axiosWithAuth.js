@@ -3,9 +3,13 @@ import axios from 'axios';
 const axiosWithAuth = () => {
   const token = sessionStorage.getItem('token');
 
+  const test = '*';
+
   return axios.create({
     headers: {
-      Authorization: token
+      Authorization: token,
+      "Access-Control-Allow-Origin": test,
+      Accept: '*/*'
     }
   });
 };
