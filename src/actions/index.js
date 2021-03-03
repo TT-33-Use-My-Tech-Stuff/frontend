@@ -23,3 +23,7 @@ export function submitSignup(signupData){
 export function submitLogin(loginData){
     return{ type: SUBMIT_LOGIN, payload: loginData};
 }
+
+
+//  PETER BASE URL: 'https://tt-33-use-my-tech.herokuapp.com/api/users/register'
+//  OSCAR BASE URL: 'https://buildweek-usemytech.herokuapp.com/user'
