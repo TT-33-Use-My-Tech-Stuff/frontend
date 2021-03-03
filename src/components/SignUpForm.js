@@ -15,7 +15,7 @@ export default function SignUpForm(props){
     return (
         <FormSection>
             <div className='error-modal' style={{color: 'red'}}>
-                <p>{errors.name}</p>
+                <p>{errors.username}</p>
                 <p>{errors.email}</p>
                 <p>{errors.password}</p>
                 <p>{errors.confirmPassword}</p>
@@ -23,10 +23,10 @@ export default function SignUpForm(props){
             <form onSubmit={submit}>
                 <label>
                     <input 
-                    name='name' 
+                    name='username' 
                     type='text' 
-                    placeholder='Name'
-                    values={values.name}
+                    placeholder='Username'
+                    values={values.username}
                     onChange={change}
                     />
                 </label>

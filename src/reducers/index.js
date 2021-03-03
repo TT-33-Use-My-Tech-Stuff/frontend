@@ -11,7 +11,7 @@ const initialState = {
         username: '',
         password: ''
     },
-    loggedin: true,
+    loggedin: false,
 }
 
 function reducer(state = initialState, action) {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { submitSignup } from '../actions';
 import SignUpForm from './SignUpForm';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import * as yup from 'yup'
 import signSchema from './validation/signupSchema'
@@ -14,13 +15,13 @@ function Signup(props){
     
     //Empty form shape
     const initialForm = {
-        name: '',
+        username: '',
         email: '',
         password: '',
     }
     //Empty form error shape
     const intialFormErrors = {
-        name: '',
+        username: '',
         email: '',
         password: '',
     }
@@ -52,6 +53,11 @@ function Signup(props){
     const onSubmit = e => {
         e.preventDefault();
         props.submitSignup(form);
+
+        // axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', form)
+        // .then(res => {
+        //     console.log(res);
+        // })
     }
 
     //Handles submission button's disabled prop
@@ -69,7 +75,6 @@ function Signup(props){
             errors={formErrors} 
             disabled={disabled}
             />
-            <div>Helldisjfodshfods</div>
         </StyledSignup>
     )
 }
