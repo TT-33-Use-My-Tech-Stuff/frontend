@@ -1,4 +1,4 @@
-import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER, FETCH_TECH } from '../actions';
+import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER, FETCH_TECH, EDIT_USER } from '../actions';
 
 const initialState = {
     title: 'Hello from the reducer!',
@@ -58,6 +58,18 @@ function reducer(state = initialState, action) {
                         role_id: action.payload.role_id
                     }
                 }
+
+                case EDIT_USER:
+                    return {
+                        ...state,
+                        currentUser: {
+                            user_id: action.payload.user_id,
+                            username: action.payload.username,
+                            email: action.payload.email,
+                            role: action.payload.role_id === 1 ? 'Renter' : 'Owner',
+                            role_id: action.payload.role_id
+                        }
+                    }
 
             case FETCH_TECH:
                 return {

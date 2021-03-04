@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { fetchUser } from '../actions';
+import { fetchUser, editUser } from '../actions';
 import axios from 'axios';
 
 import EditUser from './EditUser';
@@ -25,14 +25,9 @@ function Dashboard(props){
 
     //* action will need to take in user id AND new data as arguments
 
-    function editProf(userData){
-        axios.put(`https://tt-33-use-my-tech.herokuapp.com/api/users/${currentUser.id}`)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    function edit(e){
+        e.preventDefault();
+        props.editUser(currentUser.user_id, editData);
     }
 
     const onChange = e => {
@@ -60,7 +55,7 @@ function Dashboard(props){
                 </div>
             </div>
 
-            {editing && <EditUser editData={editData} setEditData={setEditData} onChange={onChange} />}
+            {editing && <EditUser editData={editData} setEditData={setEditData} onChange={onChange} edit={edit} />}
         </StyledDash>
     )
 }
@@ -71,7 +66,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchUser })(Dashboard);
+export default connect(mapStateToProps, { fetchUser, editUser })(Dashboard);
 
 const StyledDash = styled.section`
     width: 100%;
