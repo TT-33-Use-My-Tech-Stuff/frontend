@@ -2,32 +2,73 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { fetchTech } from '../actions';
+import { fetchTech, addTech } from '../actions';
 
 import AddItemForm from './AddItemForm';
 
+const initAddItemData = {
+    name: '',
+    description: '',
+    user_id: 0
+}
+
 
 function TechList(props){
+    const [adding, setAdding] = useState(false);
+    const [addItemData, setAddItemData] = useState(initAddItemData);
 
-    const { fetchTech, techList, currentUser } = props;
+    const { fetchTech, techList, currentUser, addTech } = props;
 
     useEffect(() => {
         fetchTech();
+
+        setAddItemData({
+            ...addItemData,
+            user_id: currentUser.user_id
+        });
+
     }, [])
 
+    //* Add means to add posting user_id to the added item's values
 
-    //* ADD BUTTON TO RENDER ADDITEM FORM
+    const handleChange = e => {
+        setAddItemData({
+            ...addItemData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const onSubmit = e => {
+        // e.preventDefault();
+
+        props.addTech(addItemData);
+    }
+
     return(
         <StyledTechList>
             <h1>Available Rentals </h1>
-            {currentUser.role === "Owner" && <button>Add New Tech</button>}
+
+            {/** Render AddItemForm IF adding === true **/}
+
+            {adding && <AddItemForm addItemData={addItemData} change={handleChange} submit={onSubmit} />}
+
+            {/** Render Add New Tech button IF User === Owner **/}
+
+            {currentUser.role === "Owner" && <button onClick={() => setAdding(!adding)}>Add New Tech</button>}
+
+            {/** Map over the list of tech received from our action's API call / Renders them to Page **/}
+
             {techList && techList.map(i => {
                 return (<div className='techCard' key={i.tech_id}>
+                
                 <div className='techText'>
                     <p>{i.name}</p>
                     <p>{i.description}</p>
                 </div>
+                
+
                 <div className='techImg'><p>Item Image Here</p></div>
+                
                 </div>)
             })}
         </StyledTechList>
@@ -41,7 +82,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchTech })(TechList);
+export default connect(mapStateToProps, { fetchTech, addTech })(TechList);
 
 const StyledTechList = styled.div`
     text-align: center;
