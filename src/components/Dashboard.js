@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const dummyData = {
     username: 'Paul',
@@ -7,8 +8,8 @@ const dummyData = {
     role: 'Renter'
 }
 
-function Dashboard(){
-
+function Dashboard(props){
+    console.log(props.currentUser);
     return(
         <StyledDash>
             <div>
@@ -30,7 +31,13 @@ function Dashboard(){
     )
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return{
+        currentUser: state.currentUser,
+    }
+}
+
+export default connect(mapStateToProps, {})(Dashboard);
 
 const StyledDash = styled.section`
     width: 100%;

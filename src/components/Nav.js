@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 function Nav(props){
 
-    const loggedin = localStorage.getItem('token');
+    const { loggedin } = props;
 
     const logout = () => {
         localStorage.removeItem('token');
