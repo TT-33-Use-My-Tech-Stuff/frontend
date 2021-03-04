@@ -1,16 +1,8 @@
-import { SUBMIT_SIGNUP, SUBMIT_LOGIN, SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER } from '../actions';
+import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER, FETCH_TECH } from '../actions';
 
 const initialState = {
     title: 'Hello from the reducer!',
-    signup: {
-        username: '',
-        email: '',
-        password: ''
-    },
-    login: {
-        username: '',
-        password: ''
-    },
+
     loggedin: false,
 
     currentUser: {
@@ -19,23 +11,14 @@ const initialState = {
         email: '',
         role: '',
         role_id: 0
-    }
+    },
+
+    techList: null
 }
 
 function reducer(state = initialState, action) {
     console.log(`action type: ${action.type}, action payload: ` + action.payload)
     switch(action.type){
-        case SUBMIT_SIGNUP:
-            return {
-                ...state,
-                signup: action.payload
-            };
-
-        case SUBMIT_LOGIN:
-            return {
-                ...state,
-                login: action.payload
-            };
 
             case SIGNUP_SUCCESS:
                 console.log('signup action.payload: ' + action.payload)
@@ -75,6 +58,13 @@ function reducer(state = initialState, action) {
                         role_id: action.payload.role_id
                     }
                 }
+
+            case FETCH_TECH:
+                return {
+                    ...state,
+                    techList: [...action.payload]
+                }
+
         default:
             return state;
     }
