@@ -1,20 +1,20 @@
 import axios from 'axios';
 
 const axiosWithAuth = () => {
-  const token = sessionStorage.getItem('token');
-
-  // return axios.create({
-  //   headers: {
-  //     Authorization: token,
-  //   }
-  // });
+  const token = localStorage.getItem('token');
 
   return axios.create({
-    headers:  {
-      Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+    headers: {
+      Authorization: token,
     }
-  })
+  });
+
+  // return axios.create({
+  //   headers:  {
+  //     Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   }
+  // })
 };
 
 export default axiosWithAuth;
