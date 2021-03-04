@@ -6,7 +6,9 @@ export const EDIT_USER = "EDIT_USER";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
+
 export const FETCH_TECH = "FETCH_TECH";
+export const ADD_TECH = "ADD_TECH";
 
 // / / / / / Action Creator for User Registration / / / / / //
 
@@ -101,6 +103,20 @@ export const fetchTech = () => dispatch => {
         .then(res => {
             console.log(res.data);
             dispatch({type: FETCH_TECH, payload: res.data});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+// / / / / / Action Creator for Adding New Tech / / / / / //
+
+export const addTech = (newTech) => dispatch => {
+    console.log('addTech got run!');
+
+    axiosWithAuth().post('https://tt-33-use-my-tech.herokuapp.com/api/tech', newTech)
+        .then(res => {
+            console.log(res);
         })
         .catch(err => {
             console.log(err);

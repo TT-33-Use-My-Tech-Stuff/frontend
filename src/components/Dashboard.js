@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { fetchUser, editUser } from '../actions';
 import axios from 'axios';
@@ -17,6 +18,8 @@ function Dashboard(props){
     const [editing, setEditing] = useState(false);
     const [editData, setEditData] = useState(initEditData)
     const { currentUser } = props;
+
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -50,7 +53,7 @@ function Dashboard(props){
                     </div>
                     <div className='btns'>
                         <button onClick={() => setEditing(!editing)}>Edit Profile</button>
-                        <button>Tech List</button>
+                        <button onClick={() => history.push('/rentals')}>Tech List</button>
                     </div>
                 </div>
             </div>
