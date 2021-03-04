@@ -1,13 +1,13 @@
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-export const SUBMIT_SIGNUP = "SUBMIT_SIGNUP";
-export const SUBMIT_LOGIN = "SUBMIT_LOGIN";
-
 export const FETCH_USER = "FETCH_USER";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
+export const FETCH_TECH = "FETCH_TECH";
+
+// / / / / / Action Creator for User Registration / / / / / //
 
 export const submitSignup = (signupData) => dispatch => {
 
@@ -36,6 +36,8 @@ export const submitSignup = (signupData) => dispatch => {
     // return { type: SUBMIT_SIGNUP, payload: signupData};
 }
 
+// / / / / / Action Creator for User Login / / / / / //
+
 export function submitLogin(loginData){
 
     console.log(loginData);
@@ -54,9 +56,13 @@ export function submitLogin(loginData){
     }
 }
 
+// / / / / / Action Creator for User Logout / / / / / //
+
 export const logout = () => {
     return { type: LOGOUT, payload: false };
 }
+
+// / / / / / Action Creator for Fetching Single User Data | Setting that user to State / / / / / //
 
 export const fetchUser = (id) => dispatch => {
     console.log('fetchUser got run! id: ' + id);
@@ -66,6 +72,21 @@ export const fetchUser = (id) => dispatch => {
             console.log(res.data);
             dispatch({type: FETCH_USER, payload: res.data});
 
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+// / / / / / Action Creator for Fetching Tech List / / / / / //
+
+export const fetchTech = () => dispatch => {
+    console.log('fetchTech got run!');
+
+    axiosWithAuth().get('https://tt-33-use-my-tech.herokuapp.com/api/tech')
+        .then(res => {
+            console.log(res.data);
+            dispatch({type: FETCH_TECH, payload: res.data});
         })
         .catch(err => {
             console.log(err);
