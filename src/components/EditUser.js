@@ -2,11 +2,11 @@ import React from 'react'
 
 export default function EditUser(props) {
 
-    const { editData, setEditData, onChange } = props;
+    const { editData, setEditData, onChange, edit } = props;
 
     return (
         <div>
-            <form>
+            <form onSubmit={edit}>
                 <label>Username
                     <input
                     type='text'

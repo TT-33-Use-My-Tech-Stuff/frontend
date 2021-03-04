@@ -2,6 +2,7 @@ import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 export const FETCH_USER = "FETCH_USER";
+export const EDIT_USER = "EDIT_USER";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
@@ -72,6 +73,19 @@ export const fetchUser = (id) => dispatch => {
             console.log(res.data);
             dispatch({type: FETCH_USER, payload: res.data});
 
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+// / / / / / Action Creator for Editing User Info / / / / / //
+
+export const editUser = (id, userData) => dispatch => {
+    axiosWithAuth().put(`https://tt-33-use-my-tech.herokuapp.com/api/users/${id}`, userData)
+        .then(res => {
+            console.log(res.data);
+            dispatch({type: EDIT_USER, payload: res.data})
         })
         .catch(err => {
             console.log(err);
