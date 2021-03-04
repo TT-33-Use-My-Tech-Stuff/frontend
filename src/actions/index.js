@@ -3,20 +3,22 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 export const SUBMIT_SIGNUP = "SUBMIT_SIGNUP";
 export const SUBMIT_LOGIN = "SUBMIT_LOGIN";
 
-export function submitSignup(signupData){
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+
+export const submitSignup = (signupData) => dispatch => {
 
     console.log(signupData)
 
-    return dispatch => {
+
         axios.post('https://tt-33-use-my-tech.herokuapp.com/api/users/register', signupData)
         .then(res => {
-            console.log(res)
-
+            console.log(res.data)
+            dispatch({type: SIGNUP_SUCCESS, payload: res.data});
         })
         .catch(err => {
             console.log(err.message)
         })
-    }
 
     //     return dispatch => {
     //         axiosWithAuth.post('https://buildweek-usemytech.herokuapp.com/users/user', signupData)
@@ -40,6 +42,8 @@ export function submitLogin(loginData){
         .then(res => {
             console.log(res.data);
             localStorage.setItem('token', res.data.token);
+
+            dispatch({type: LOGIN_SUCCESS, payload: true});
         })
         .catch(err => {
             console.log(err);

@@ -54,7 +54,7 @@ function Signup(props){
     const onSubmit = e => {
         e.preventDefault();
         props.submitSignup(form);
-        history.push('/login');
+        history.push('/dash');
     }
 
     //Handles submission button's disabled prop
