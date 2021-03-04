@@ -13,7 +13,7 @@ export default function LoginForm (props) {
         
         <StyledLogin>
             <form onSubmit={onSubmit}>
-                <StyledParagraph>{formErr.email}</StyledParagraph>
+                <StyledParagraph>{formErr.username}</StyledParagraph>
                 <StyledParagraph>{formErr.password}</StyledParagraph>
                 <input
                     name='username'
