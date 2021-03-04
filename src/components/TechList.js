@@ -5,17 +5,10 @@ import { fetchTech } from '../actions';
 
 
 function TechList(props){
-    // const [tech, setTech] = useState(null);
 
     const { fetchTech, techList } = props;
 
     useEffect(() => {
-        // axiosWithAuth().get('https://tt-33-use-my-tech.herokuapp.com/api/tech')
-        // .then(res => {
-        //     console.log(res);
-        //     setTech([...res.data]);
-        // })
-
         fetchTech();
     }, [])
 
