@@ -1,4 +1,4 @@
-import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER, FETCH_TECH, EDIT_USER } from '../actions';
+import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER, FETCH_TECH, EDIT_USER, ADD_TECH } from '../actions';
 
 const initialState = {
     title: 'Hello from the reducer!',
@@ -17,7 +17,8 @@ const initialState = {
 }
 
 function reducer(state = initialState, action) {
-    console.log(`action type: ${action.type}, action payload: ` + action.payload)
+    console.log(`action type: ${action.type}`);
+
     switch(action.type){
 
             case SIGNUP_SUCCESS:
@@ -75,6 +76,15 @@ function reducer(state = initialState, action) {
                 return {
                     ...state,
                     techList: [...action.payload]
+                }
+
+            case ADD_TECH:
+                return {
+                    ...state,
+                    techList: [
+                        ...state.techList,
+                        action.payload
+                    ]
                 }
 
         default:

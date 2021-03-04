@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { fetchTech, addTech } from '../actions';
+import { fetchTech, addTech, deleteTech } from '../actions';
 
 import AddItemForm from './AddItemForm';
 
@@ -17,8 +17,9 @@ function TechList(props){
     const [adding, setAdding] = useState(false);
     const [addItemData, setAddItemData] = useState(initAddItemData);
 
-    const { fetchTech, techList, currentUser, addTech } = props;
+    const { fetchTech, techList, currentUser, addTech, deleteTech } = props;
 
+    // / / / / / Fetches Tech List on Render / / / / / //
     useEffect(() => {
         fetchTech();
 
@@ -29,7 +30,7 @@ function TechList(props){
 
     }, [])
 
-    //* Add means to add posting user_id to the added item's values
+    // / / / / / Handles Form for Adding Tech / / / / / //
 
     const handleChange = e => {
         setAddItemData({
@@ -38,11 +39,17 @@ function TechList(props){
         })
     }
 
+    // / / / / / Handles Form Submission for Adding Tech / / / / / //
+
     const onSubmit = e => {
-        // e.preventDefault();
+        e.preventDefault();
 
         props.addTech(addItemData);
     }
+
+    // / / / / / Handles Deletion of Tech Item by ID / / / / / //
+
+
 
     return(
         <StyledTechList>
@@ -64,6 +71,7 @@ function TechList(props){
                 <div className='techText'>
                     <p>{i.name}</p>
                     <p>{i.description}</p>
+                    <button onClick={() => deleteTech(i.tech_id)}>Remove this Tech</button>
                 </div>
                 
 
@@ -82,7 +90,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchTech, addTech })(TechList);
+export default connect(mapStateToProps, { fetchTech, addTech, deleteTech })(TechList);
 
 const StyledTechList = styled.div`
     text-align: center;
