@@ -9,6 +9,7 @@ export const LOGOUT = "LOGOUT";
 
 export const FETCH_TECH = "FETCH_TECH";
 export const ADD_TECH = "ADD_TECH";
+export const DELETE_TECH = "DELETE_TECH";
 
 // / / / / / Action Creator for User Registration / / / / / //
 
@@ -117,12 +118,25 @@ export const addTech = (newTech) => dispatch => {
     axiosWithAuth().post('https://tt-33-use-my-tech.herokuapp.com/api/tech', newTech)
         .then(res => {
             console.log(res);
+            dispatch(res.data);
         })
         .catch(err => {
             console.log(err);
         })
 }
 
+// / / / / / Action Creator for Deleting Tech / / / / / //
+
+export const deleteTech = (id) => dispatch => {
+
+    axiosWithAuth().delete(`https://tt-33-use-my-tech.herokuapp.com/api/tech/${id}`)
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
 
 
 //  PETER BASE URL: 'https://tt-33-use-my-tech.herokuapp.com/api/users/register'
