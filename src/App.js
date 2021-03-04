@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import TechList from './components/TechList';
 
 import { Route } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 
 
 
@@ -20,7 +21,7 @@ function App() {
       <Route path='/about' component={MeetDevs} />
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
-      <Route path='/dash' component={Dashboard} />
+      <PrivateRoute exact path='/dash' component={Dashboard} />
       <Route path='/rentals' component={TechList} />
 
     </div>

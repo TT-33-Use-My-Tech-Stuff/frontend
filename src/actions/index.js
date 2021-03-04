@@ -5,6 +5,7 @@ export const SUBMIT_LOGIN = "SUBMIT_LOGIN";
 
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT = "LOGOUT";
 
 export const submitSignup = (signupData) => dispatch => {
 
@@ -49,7 +50,10 @@ export function submitLogin(loginData){
             console.log(err);
         })
     }
-    // return{ type: SUBMIT_LOGIN, payload: loginData};
+}
+
+export const logout = () => {
+    return { type: LOGOUT, payload: false };
 }
 
 

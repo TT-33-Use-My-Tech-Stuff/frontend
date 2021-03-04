@@ -1,4 +1,4 @@
-import { SUBMIT_SIGNUP, SUBMIT_LOGIN, SIGNUP_SUCCESS, LOGIN_SUCCESS } from '../actions';
+import { SUBMIT_SIGNUP, SUBMIT_LOGIN, SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT } from '../actions';
 
 const initialState = {
     title: 'Hello from the reducer!',
@@ -51,6 +51,13 @@ function reducer(state = initialState, action) {
                     ...state,
                     loggedin: action.payload
                 };
+
+            case LOGOUT:
+                console.log('Logout got run!')
+                return {
+                    ...state,
+                    loggedin: action.payload
+                }
         default:
             return state;
     }
