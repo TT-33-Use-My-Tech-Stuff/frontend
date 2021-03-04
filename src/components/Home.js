@@ -4,13 +4,10 @@ import pic01 from '../styles/images/pic01.jpg';
 import pic02 from '../styles/images/pic02.jpg';
 import pic03 from '../styles/images/pic03.jpg';
 
-function Home(props){
-
-    const {count} = props;
+function Home(){
 
     return(
         <div>
-            <h1>Home Page Here! {count}</h1>
 
       <section id="banner">
         <div className="inner">
@@ -19,7 +16,7 @@ function Home(props){
             Tired of paying ridiculous fees for camera and other equipment<br />
             rentals? Bypass the middleman and rent from a real person!
           </p>
-          <ul class="actions special">
+          <ul className="actions special">
             <li><a href="#" className="button primary">Explore Items</a></li>
           </ul>
         </div>
@@ -28,8 +25,8 @@ function Home(props){
 
 
       <section id="one" className="wrapper style1 special">
-        <div class="inner">
-          <header class="major">
+        <div className="inner">
+          <header className="major">
             <h2>
               Arcu aliquet vel lobortis ata nisl<br />
               eget augue amet aliquet nisl cep donec
@@ -165,7 +162,7 @@ function Home(props){
 
 
       <section id="cta" className="wrapper style4">
-        <div class="inner">
+        <div className="inner">
           <header>
             <h2>Arcue ut vel commodo</h2>
             <p>
