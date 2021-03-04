@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+
+import { fetchUser } from '../actions';
 
 const dummyData = {
     username: 'Paul',
@@ -9,7 +11,15 @@ const dummyData = {
 }
 
 function Dashboard(props){
-    console.log(props.currentUser);
+    const { currentUser } = props;
+
+
+    useEffect(() => {
+        props.fetchUser(currentUser.user_id);
+    }, [])
+
+    console.log(currentUser);
+
     return(
         <StyledDash>
             <div>
@@ -17,9 +27,9 @@ function Dashboard(props){
 
                 <div className='profileInfo'>
                     <div className='details'>
-                        <p>Username: {dummyData.username}</p>
-                        <p>Email: {dummyData.email}</p>
-                        <p>Role: {dummyData.role}</p>
+                        {currentUser && <p>Username: {currentUser.username}</p>}
+                        {currentUser && <p>Email: {currentUser.email}</p>}
+                        {currentUser && <p>Role: {currentUser.role}</p>}
                     </div>
                     <div className='btns'>
                         <button>Edit Profile</button>
@@ -37,7 +47,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(Dashboard);
+export default connect(mapStateToProps, { fetchUser })(Dashboard);
 
 const StyledDash = styled.section`
     width: 100%;

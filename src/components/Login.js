@@ -7,13 +7,6 @@ import loginSchema from './validation/loginSchema'
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom';
 
-/*
-Login component:
-- State that has initial values of login
-- State that has error values
-- State for disabled button
-
-*/
 
 const initialFormValues = {
     username: '',
@@ -54,7 +47,7 @@ function Login (props) {
     const onSubmit = e => {
         e.preventDefault();
         props.submitLogin(formValues);
-        history.push('/dash');
+        history.push('/');
     }
 
     //useEffect to enable button when validation is clear
@@ -77,11 +70,11 @@ function Login (props) {
     )
 }
 
+export default connect(null, { submitLogin })(Login);
+
+
 const StyledHeader = styled.h1`
     width: 100%;
     text-align: center;
     font-size: 2.4rem;
 `
-
-
-export default connect(null, { submitLogin })(Login);

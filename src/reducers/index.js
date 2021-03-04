@@ -1,4 +1,4 @@
-import { SUBMIT_SIGNUP, SUBMIT_LOGIN, SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT } from '../actions';
+import { SUBMIT_SIGNUP, SUBMIT_LOGIN, SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT, FETCH_USER } from '../actions';
 
 const initialState = {
     title: 'Hello from the reducer!',
@@ -16,7 +16,9 @@ const initialState = {
     currentUser: {
         user_id: 0,
         username: '',
-        email: ''
+        email: '',
+        role: '',
+        role_id: 0
     }
 }
 
@@ -36,20 +38,23 @@ function reducer(state = initialState, action) {
             };
 
             case SIGNUP_SUCCESS:
-                console.log('action.payload: ' + action.payload)
+                console.log('signup action.payload: ' + action.payload)
                 return {
                     ...state,
                     currentUser: {
+                        ...state.currentUser,
                         user_id: action.payload.user_id,
-                        username: action.payload.username,
-                        email: action.payload.email
                     }
                 };
 
             case LOGIN_SUCCESS:
                 return {
                     ...state,
-                    loggedin: action.payload
+                    loggedin: action.payload.loggedin,
+                    currentUser: {
+                        ...state.currentUser,
+                        user_id: action.payload.id
+                    }
                 };
 
             case LOGOUT:
@@ -57,6 +62,18 @@ function reducer(state = initialState, action) {
                 return {
                     ...state,
                     loggedin: action.payload
+                }
+
+            case FETCH_USER:
+                return {
+                    ...state,
+                    currentUser: {
+                        user_id: action.payload.user_id,
+                        username: action.payload.username,
+                        email: action.payload.email,
+                        role: action.payload.role_id === 1 ? 'renter' : 'owner',
+                        role_id: action.payload.role_id
+                    }
                 }
         default:
             return state;
