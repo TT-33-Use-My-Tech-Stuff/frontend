@@ -54,7 +54,7 @@ function reducer(state = initialState, action) {
                         user_id: action.payload.user_id,
                         username: action.payload.username,
                         email: action.payload.email,
-                        role: action.payload.role_id === 1 ? 'renter' : 'owner',
+                        role: action.payload.role_id === 1 ? 'Renter' : 'Owner',
                         role_id: action.payload.role_id
                     }
                 }

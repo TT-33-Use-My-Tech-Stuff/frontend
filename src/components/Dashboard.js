@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { fetchUser } from '../actions';
+import axios from 'axios';
 
-const dummyData = {
-    username: 'Paul',
-    email: 'test@test.com',
-    role: 'Renter'
+import EditUser from './EditUser';
+
+const initEditData = {
+    username: '',
+    email: '',
+    role_id: ''
 }
 
 function Dashboard(props){
+    const [editing, setEditing] = useState(false);
+    const [editData, setEditData] = useState(initEditData)
     const { currentUser } = props;
 
 
@@ -18,7 +23,24 @@ function Dashboard(props){
         props.fetchUser(currentUser.user_id);
     }, [])
 
-    console.log(currentUser);
+    //* action will need to take in user id AND new data as arguments
+
+    function editProf(userData){
+        axios.put(`https://tt-33-use-my-tech.herokuapp.com/api/users/${currentUser.id}`)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const onChange = e => {
+        setEditData({
+            ...editData,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return(
         <StyledDash>
@@ -32,11 +54,13 @@ function Dashboard(props){
                         {currentUser && <p>Role: {currentUser.role}</p>}
                     </div>
                     <div className='btns'>
-                        <button>Edit Profile</button>
+                        <button onClick={() => setEditing(!editing)}>Edit Profile</button>
                         <button>Tech List</button>
                     </div>
                 </div>
             </div>
+
+            {editing && <EditUser editData={editData} setEditData={setEditData} onChange={onChange} />}
         </StyledDash>
     )
 }
