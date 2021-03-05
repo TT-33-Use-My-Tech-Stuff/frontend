@@ -5,16 +5,9 @@ const axiosWithAuth = () => {
 
   return axios.create({
     headers: {
-      Authorization: token,
+      Authorization: token
     }
   });
-
-  // return axios.create({
-  //   headers:  {
-  //     Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   }
-  // })
 };
 
 export default axiosWithAuth;
@@ -23,3 +16,10 @@ export default axiosWithAuth;
  * PETER BASE URL - NODE: https://tt-33-use-my-tech.herokuapp.com/
  * OSCAR BASE URL - JAVA: https://buildweek-usemytech.herokuapp.com/
  */
+
+ // return axios.create({
+  //   headers:  {
+  //     Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   }
+  // })

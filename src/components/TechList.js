@@ -71,7 +71,7 @@ function TechList(props){
                 <div className='techText'>
                     <p>{i.name}</p>
                     <p>{i.description}</p>
-                    <button onClick={() => deleteTech(i.tech_id)}>Remove this Tech</button>
+                    <button onClick={() => deleteTech(i.tech_id, i.user_id)}>Remove this Tech</button>
                 </div>
                 
 

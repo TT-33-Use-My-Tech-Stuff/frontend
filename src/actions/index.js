@@ -51,8 +51,12 @@ export function submitLogin(loginData){
         .then(res => {
             console.log(res.data);
             localStorage.setItem('token', res.data.token);
-
+            
             dispatch({type: LOGIN_SUCCESS, payload: {loggedin: true, id: res.data.user_id}});
+            return res.data.user_id;
+        })
+        .then(res => {
+            fetchUser(res);
         })
         .catch(err => {
             console.log(err);
@@ -127,14 +131,24 @@ export const addTech = (newTech) => dispatch => {
 
 // / / / / / Action Creator for Deleting Tech / / / / / //
 
-export const deleteTech = (id) => dispatch => {
+export const deleteTech = (tech_id, user_id) => dispatch => {
+console.log('deleteTech run');
 
-    axiosWithAuth().delete(`https://tt-33-use-my-tech.herokuapp.com/api/tech/${id}`)
+console.log(user_id);
+console.log(tech_id);
+
+    // const userKey = {user_id: user_id};
+    const userKey = {"user_id": user_id};
+
+    console.log(userKey);
+
+    axiosWithAuth().delete(`https://tt-33-use-my-tech.herokuapp.com/api/tech/${tech_id}`, userKey)
     .then(res => {
         console.log(res)
     })
     .catch(err => {
-        console.log(err)
+        console.log(err.response);
+        console.log("HEY");
     })
 }
 
