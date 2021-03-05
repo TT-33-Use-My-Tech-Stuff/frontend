@@ -1,3 +1,6 @@
+# DEPLOYED AT:
+[HEROKU](https://rent-a-tech.herokuapp.com/)
+
 # GIT FLOW FOR BUILD WEEK
 
 1. Clone down our 'frontend' repo WITHOUT FORKING.
