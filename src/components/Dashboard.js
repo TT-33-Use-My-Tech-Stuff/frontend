@@ -11,6 +11,7 @@ import EditUser from './EditUser';
 const initEditData = {
     username: '',
     email: '',
+    ava_img: '',
     role_id: ''
 }
 
@@ -25,8 +26,6 @@ function Dashboard(props){
     useEffect(() => {
         props.fetchUser(currentUser.user_id);
     }, [])
-
-    //* action will need to take in user id AND new data as arguments
 
     function edit(e){
         e.preventDefault();
@@ -43,7 +42,7 @@ function Dashboard(props){
     return(
         <StyledDash>
             <div>
-                <div className='imgPlaceholder'>Profile Image Here</div>
+                <div className='imgPlaceholder' style={{background: `url(${currentUser.ava_img})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}></div>
 
                 <div className='profileInfo'>
                     <div className='details'>
