@@ -23,6 +23,14 @@ export default function EditUser(props) {
                     onChange={onChange} />
                 </label>
 
+                <label>Avatar - URL Only
+                    <input
+                    type='text'
+                    name='ava_img'
+                    value={editData.ava_img}
+                    onChange={onChange} />
+                </label>
+
                 <label>Role
                     <select
                     name='role_id'

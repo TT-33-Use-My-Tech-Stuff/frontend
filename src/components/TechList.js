@@ -75,7 +75,7 @@ function TechList(props){
                 </div>
                 
 
-                <div className='techImg'><p>Item Image Here</p></div>
+                <div className='techImg' style={{background: `#9f9f9f url(${i.tech_img})`, backgroundSize: '90%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                 
                 </div>)
             })}
@@ -116,7 +116,9 @@ const StyledTechList = styled.div`
             width: 25%;
             height: 100%;
             border: 1px solid white;
-            background: #9F9F9F;
+            /* background: #9F9F9F; */
+            /* background-position: bottom; */
+            /* background-size: 25%; */
             display: flex;
             justify-content: center;
             align-items: center;

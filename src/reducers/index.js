@@ -10,6 +10,7 @@ const initialState = {
         username: '',
         email: '',
         role: '',
+        ava_img: '',
         role_id: 0
     },
 
@@ -56,6 +57,7 @@ function reducer(state = initialState, action) {
                         username: action.payload.username,
                         email: action.payload.email,
                         role: action.payload.role_id === 1 ? 'Renter' : 'Owner',
+                        ava_img: action.payload.ava_img,
                         role_id: action.payload.role_id
                     }
                 }
@@ -68,6 +70,7 @@ function reducer(state = initialState, action) {
                             username: action.payload.username,
                             email: action.payload.email,
                             role: action.payload.role_id === 1 ? 'Renter' : 'Owner',
+                            ava_img: action.payload.ava_img,
                             role_id: action.payload.role_id
                         }
                     }
