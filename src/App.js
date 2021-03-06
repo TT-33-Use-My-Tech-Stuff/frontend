@@ -1,7 +1,6 @@
 import './App.css';
 import Home from './components/Home';
 import MeetDevs from './components/MeetDevs'
-import MeetTheDevs from './components/MeetTheDevs';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Nav from './components/Nav';
@@ -19,7 +18,7 @@ function App() {
       <Nav />
 
       <Route exact path='/' component={Home} />
-      <Route path='/about' component={MeetTheDevs} />
+      <Route path='/about' component={MeetDevs} />
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
       <PrivateRoute exact path='/dash' component={Dashboard} />

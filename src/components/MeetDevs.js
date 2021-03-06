@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
 import DevCard from './DevCard';
+import styled from 'styled-components'
 
 
 function MeetDevs(props){
@@ -46,7 +47,7 @@ function MeetDevs(props){
     const { title } = props
     return(
         <div>
-            <h1>Meet the Developers</h1>
+            <StyledHeader>Meet the Developers</StyledHeader>
             {
                 devs.map(dev => {
                     return (
@@ -57,6 +58,13 @@ function MeetDevs(props){
         </div>
     )
 }
+
+const StyledHeader = styled.h1`
+    width: 100%;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-top: 3%;
+`
 
 
 
