@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { fetchTech, addTech, deleteTech } from '../actions';
+import { fetchTech, addTech, deleteTech, editUser } from '../actions';
 
 import AddItemForm from './AddItemForm';
+import EditItemForm from './EditItemForm';
 
 const initAddItemData = {
     name: '',
@@ -12,10 +13,20 @@ const initAddItemData = {
     user_id: 0
 }
 
+const initEditItemData = {
+    name: '',
+    description: '',
+    tech_img: '',
+    user_id: 0
+}
+
 
 function TechList(props){
     const [adding, setAdding] = useState(false);
     const [addItemData, setAddItemData] = useState(initAddItemData);
+
+    const [editing, setEditing] = useState(false);
+    const [editItemData, setEditItemData] = useState(initEditItemData);
 
     const { fetchTech, techList, currentUser, addTech, deleteTech } = props;
 
@@ -32,7 +43,7 @@ function TechList(props){
 
     // / / / / / Handles Form for Adding Tech / / / / / //
 
-    const handleChange = e => {
+    const handleAddChange = e => {
         setAddItemData({
             ...addItemData,
             [e.target.name]: e.target.value
@@ -41,14 +52,28 @@ function TechList(props){
 
     // / / / / / Handles Form Submission for Adding Tech / / / / / //
 
-    const onSubmit = e => {
+    const handleAddSubmit = e => {
         e.preventDefault();
 
         props.addTech(addItemData);
     }
 
-    // / / / / / Handles Deletion of Tech Item by ID / / / / / //
+    // / / / / / Handles Form for Editing Tech / / / / / //
 
+    const handleEditChange = e => {
+        setEditItemData({
+            ...editItemData,
+            [e.target.name]: e.target.value,
+            user_id: currentUser.user_id
+        })
+    }
+
+    // / / / / / Handles Form Submission for Editing Tech / / / / / //
+
+    const handleEditSubmit = e => {
+        e.preventDefault();
+
+    }
 
 
     return(
@@ -57,7 +82,7 @@ function TechList(props){
 
             {/** Render AddItemForm IF adding === true **/}
 
-            {adding && <AddItemForm addItemData={addItemData} change={handleChange} submit={onSubmit} />}
+            {adding && <AddItemForm addItemData={addItemData} change={handleAddChange} submit={handleAddSubmit} />}
 
             {/** Render Add New Tech button IF User === Owner **/}
 
@@ -72,6 +97,8 @@ function TechList(props){
                     <p>{i.name}</p>
                     <p>{i.description}</p>
                     <button onClick={() => deleteTech(i.tech_id, i.user_id)}>Remove this Tech</button>
+                    <button onClick={() => setEditing(!editing)}>Edit this Tech</button>
+                    {editing && <EditItemForm itemData={i} editItemData={editItemData} setEditItemData={setEditItemData} change={handleEditChange} submit={handleEditSubmit} />}
                 </div>
                 
 
